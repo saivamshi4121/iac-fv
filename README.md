@@ -25,6 +25,17 @@ A workflow in `.github/workflows/check.yml` runs on every push and PR: fmt, vali
 - TFLint will auto-download its rules on first run.
 - Checkov runs with Terraform framework checks.
 
+## Deployment mapping
+
+- `backend/` → Render (Docker web service)
+  - Dockerfile: `backend/Dockerfile`
+  - Health check: `/healthz`
+  - Env: `PORT=8080`
+- `frontend/` → Vercel (Next.js)
+  - Root directory: `frontend`
+  - Env: `NEXT_PUBLIC_API_URL=https://YOUR-BACKEND.onrender.com/api/validate`
+- Other files (e.g., `main.tf`, `.tflint.hcl`, `.checkov.yaml`, `check.bat`, `check.sh`, `docker-compose.yml`) are examples and contributor tooling; they are not deployed.
+
 ## Web API (optional)
 An Express backend exposes `/api/validate` to run the same checks on submitted Terraform.
 

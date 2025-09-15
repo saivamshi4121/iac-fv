@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: iac-validator-backend
+    env: docker
+    plan: free
+    autoDeploy: true
+    region: oregon
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /healthz
+    envVars:
+      - key: PORT
+        value: 8080
+

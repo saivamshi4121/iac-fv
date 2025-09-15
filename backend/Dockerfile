@@ -29,9 +29,10 @@ RUN pip install --no-cache-dir checkov==3.* \
 
 WORKDIR /app
 
-COPY package.json ./
+# Install Node deps (no lockfile in repo, so use npm install to avoid noisy ci errors)
+COPY package*.json ./
 RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/* \
- && npm ci || npm install
+ && npm install --omit=dev
 
 COPY . .
 
