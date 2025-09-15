@@ -1,0 +1,19 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Env files
+.env
+**/.env
+
+# Terraform local state
+.terraform/
+**/.terraform/
+.terraform.lock.hcl
+terraform.tfstate*
+
+# OS
+*.log
+*.DS_Store
+Thumbs.db
+
