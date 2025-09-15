@@ -25,6 +25,15 @@ function run(cmd, options = {}) {
   });
 }
 
+const ANSI_REGEX = /\u001b\[[0-9;]*m/g; // strip color sequences
+function stripAnsiText(text) {
+  if (!text) return '';
+  return text.replace(ANSI_REGEX, '');
+}
+function stripAnsiResult(r) {
+  return r ? { ...r, stdout: stripAnsiText(r.stdout), stderr: stripAnsiText(r.stderr) } : r;
+}
+
 app.post('/api/validate', async (req, res) => {
   try {
     const { terraform } = req.body || {};
@@ -40,12 +49,12 @@ app.post('/api/validate', async (req, res) => {
 
     const results = { fmt: {}, init: {}, validate: {}, tflint: {}, checkov: {} };
 
-    results.fmt = await run('terraform fmt -recursive -check -no-color', { cwd: workdir });
-    results.init = await run('terraform init -backend=false -input=false -lock=false -upgrade -no-color', { cwd: workdir });
-    results.validate = await run('terraform validate -no-color', { cwd: workdir });
+    results.fmt = stripAnsiResult(await run('terraform fmt -recursive -check -no-color', { cwd: workdir }));
+    results.init = stripAnsiResult(await run('terraform init -backend=false -input=false -lock=false -upgrade -no-color', { cwd: workdir }));
+    results.validate = stripAnsiResult(await run('terraform validate -no-color', { cwd: workdir }));
 
-    results.tflint = await run('tflint --init && tflint -f json', { cwd: workdir, shell: true });
-    results.checkov = await run('checkov -d . --framework terraform -o json', { cwd: workdir });
+    results.tflint = stripAnsiResult(await run('tflint --init && tflint -f json', { cwd: workdir, shell: true }));
+    results.checkov = stripAnsiResult(await run('checkov -d . --framework terraform -o json', { cwd: workdir }));
 
     // Best-effort cleanup
     try { await fs.rm(workdir, { recursive: true, force: true }); } catch {}
