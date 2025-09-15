@@ -10,8 +10,17 @@ import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 // CORS: allow frontend (Vercel) to call the API and handle preflight
+const ALLOWED_ORIGINS = [
+  'http://localhost:3000',
+  'https://iacfv.vercel.app',
+  'https://iacvalidator.stackhaus.dev'
+];
 const corsOptions = {
-  origin: (origin, callback) => callback(null, true),
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const ok = ALLOWED_ORIGINS.includes(origin);
+    return callback(ok ? null : new Error('Not allowed by CORS'), ok);
+  },
   credentials: false,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Accept']
