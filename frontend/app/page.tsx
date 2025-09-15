@@ -23,6 +23,33 @@ export default function LandingPage() {
             <p className="text-sm text-gray-600 dark:text-gray-300">Collapsible panels, summaries, and links for fast remediation.</p>
           </div>
         </section>
+
+        <section className="mt-14 grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-2xl font-bold mb-2">About this project</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-3">
+              This tool helps you improve Infrastructure as Code quality. It automatically runs
+              <strong> terraform fmt</strong>, <strong>terraform validate</strong>, <strong>TFLint</strong>, and
+              <strong> Checkov</strong> on your Terraform snippets and shows readable results with links.
+            </p>
+            <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-1">
+              <li>Learn best practices with instant feedback.</li>
+              <li>Catch syntax, configuration, and security issues early.</li>
+              <li>No sign-in required; code is processed temporarily and not stored.</li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold mb-2">How to use (beginners)</h2>
+            <ol className="list-decimal pl-5 text-gray-700 dark:text-gray-300 space-y-1">
+              <li>Click <a className="text-blue-600 dark:text-blue-300 hover:underline" href="/validate">Start validating</a>.</li>
+              <li>Paste a Terraform snippet in the editor (try an AWS S3 bucket).</li>
+              <li>Press <span className="font-semibold">Run checks</span>.</li>
+              <li>Expand panels to view <span className="font-semibold">Fmt</span>, <span className="font-semibold">Validate</span>, <span className="font-semibold">TFLint</span>, and <span className="font-semibold">Checkov</span> results.</li>
+              <li>Follow links in messages to learn rules and fix issues.</li>
+            </ol>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Tip: open <a className="text-blue-600 dark:text-blue-300 hover:underline" href="/help">Docs</a> for examples and troubleshooting.</p>
+          </div>
+        </section>
       </main>
     </div>
   );
