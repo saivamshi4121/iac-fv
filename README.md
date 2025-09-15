@@ -45,4 +45,15 @@ npm start
 ```
 Endpoint: `http://localhost:8080/api/validate`
 
+## Frontend (optional)
+A simple Next.js UI lives in `frontend/` with a Monaco editor and a results view.
+
+### Run the frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Open `http://localhost:3000`. To point it at a different backend URL, set `NEXT_PUBLIC_API_URL` env var.
+
 
