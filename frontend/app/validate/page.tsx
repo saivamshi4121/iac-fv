@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
-import Editor from '@monaco-editor/react';
+import dynamic from 'next/dynamic';
+const Editor = dynamic(() => import('@monaco-editor/react'), { ssr: false });
 
 // Avoid static generation to prevent `document` access during build
 export const dynamic = 'force-dynamic';
