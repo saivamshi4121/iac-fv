@@ -21,6 +21,7 @@ export default function Tour({ steps, storageKey = 'iac-tour-done' }: { steps: S
     return () => window.removeEventListener('keydown', onEsc);
   }, []);
 
+  if (typeof document === 'undefined') return null;
   if (!open || !step || !anchor) return null;
 
   const rect = anchor.getBoundingClientRect();
