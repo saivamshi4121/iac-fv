@@ -1,5 +1,8 @@
 import './globals.css';
 import dynamic from 'next/dynamic';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'IaC Formatter and Validator',
@@ -10,10 +13,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const Header = dynamic(() => import('../components/Header'), { ssr: false });
   return (
     <html lang="en">
-      <body style={{ fontFamily: 'system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif', margin: 0 }}>
+      <body className={`${inter.className}`} style={{ margin: 0 }}>
         {/* Client header with theme toggle via dynamic import to avoid SSR mismatch */}
         <Header />
         <div style={{ padding: 0 }}>{children}</div>
+        <footer className="border-t border-slate-200 dark:border-slate-800 mt-10">
+          <div className="max-w-6xl mx-auto px-6 py-6 text-sm text-gray-500 flex justify-between">
+            <span>© {new Date().getFullYear()} IaC Validator</span>
+            <div className="flex gap-4">
+              <a href="/help" className="hover:underline">Help</a>
+              <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:underline">GitHub</a>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
