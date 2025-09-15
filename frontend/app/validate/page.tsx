@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Editor from '@monaco-editor/react';
+import Tour from '../../components/Tour';
 
 type ToolResult = { code: number; stdout: string; stderr: string };
 type ApiResponse = {
@@ -148,8 +149,14 @@ resource "null_resource" "demo" {}
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-8">
+      <Tour steps={[
+        { target: 'h1', title: 'Welcome', text: 'Paste Terraform, run checks, and see results — quickly.' },
+        { target: '#tf-editor', title: 'Editor', text: 'Paste your Terraform code here to start validation.', placement: 'bottom' },
+        { target: '#run-btn', title: 'Run checks', text: "Click 'Run checks' to format, validate, lint, and scan security.", placement: 'top' },
+        { target: '#results-panel', title: 'Results', text: 'See detailed results here, with warnings and errors clearly indicated.', placement: 'top' },
+      ]} />
       <h1 className="text-2xl font-bold mb-4">Validate Terraform</h1>
-      <div className="h-[380px] border border-slate-200 dark:border-slate-700 rounded-lg mb-3">
+      <div id="tf-editor" className="h-[380px] border border-slate-200 dark:border-slate-700 rounded-lg mb-3">
         <Editor
           height="100%"
           defaultLanguage="hcl"
@@ -158,7 +165,7 @@ resource "null_resource" "demo" {}
           options={{ minimap: { enabled: false }, fontSize: 14 }}
         />
       </div>
-      <button onClick={onSubmit} disabled={loading} className="px-4 py-2 rounded-md bg-slate-800 text-white hover:bg-slate-900 disabled:opacity-60">
+      <button id="run-btn" onClick={onSubmit} disabled={loading} className="px-4 py-2 rounded-md bg-slate-800 text-white hover:bg-slate-900 disabled:opacity-60">
         {loading ? 'Running…' : 'Run checks'}
       </button>
       {loading && (
@@ -171,7 +178,7 @@ resource "null_resource" "demo" {}
         <div className="mt-3 p-2 rounded text-white bg-red-700">{error}</div>
       )}
       {result && (
-        <div className="mt-4">
+        <div id="results-panel" className="mt-4">
           {(() => {
             const s = overallSummary(result);
             return (

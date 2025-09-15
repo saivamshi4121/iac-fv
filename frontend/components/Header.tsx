@@ -25,6 +25,7 @@ export default function Header() {
           <a href="/" className="font-bold">IaC Validator</a>
         </div>
         <div className="hidden sm:flex items-center gap-4">
+          <a href="/" className="hover:underline">Home</a>
           <a href="/validate" className="hover:underline">Validate</a>
           <a href="/help" className="hover:underline">Docs</a>
           <span className="relative">
@@ -63,6 +64,7 @@ export default function Header() {
       {open && (
         <div className="sm:hidden border-t border-slate-200 dark:border-slate-800 px-6 pb-3">
           <div className="flex flex-col gap-2 pt-2">
+            <a href="/" className="hover:underline">Home</a>
             <a href="/validate" className="hover:underline">Validate</a>
             <a href="/help" className="hover:underline">Docs</a>
             <button onClick={async () => {
