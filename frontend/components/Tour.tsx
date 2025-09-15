@@ -13,7 +13,10 @@ export default function Tour({ steps, storageKey = 'iac-tour-done' }: { steps: S
   }, [storageKey]);
 
   const step = steps[idx];
-  const anchor = useMemo(() => (step ? document.querySelector(step.target) as HTMLElement | null : null), [step, idx, open]);
+  const anchor = useMemo(() => {
+    if (typeof document === 'undefined' || !step) return null;
+    return document.querySelector(step.target) as HTMLElement | null;
+  }, [step, idx, open]);
 
   useEffect(() => {
     function onEsc(e: KeyboardEvent) { if (e.key === 'Escape') setOpen(false); }
