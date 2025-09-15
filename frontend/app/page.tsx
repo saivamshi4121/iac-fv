@@ -4,7 +4,10 @@ export default function LandingPage() {
       <main className="py-10">
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">Improve your Terraform quickly</h1>
         <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-3xl">Format, validate, lint, and scan security with Terraform, TFLint, and Checkov. Get actionable results instantly.</p>
-        <a href="/validate" className="inline-block bg-slate-800 text-white px-5 py-3 rounded-md hover:bg-slate-900 dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-white transition">Start validating</a>
+        <div className="flex items-center gap-4">
+          <a href="/validate" className="inline-block bg-slate-800 text-white px-5 py-3 rounded-md hover:bg-slate-900 dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-white transition">Start validating</a>
+          <a className="github-button" href="https://github.com/saivamshi4121/iac-fv" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star saivamshi4121/iac-fv on GitHub">Star</a>
+        </div>
         <section className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="rounded-lg border border-slate-200 dark:border-slate-700 p-5 transition hover:shadow-md hover:-translate-y-0.5 animate-fade-in-up" style={{ animationDelay: '0ms' }}>
             <div className="font-semibold mb-2">Terraform fmt and validate</div>
@@ -47,7 +50,7 @@ export default function LandingPage() {
               <li>Expand panels to view <span className="font-semibold">Fmt</span>, <span className="font-semibold">Validate</span>, <span className="font-semibold">TFLint</span>, and <span className="font-semibold">Checkov</span> results.</li>
               <li>Follow links in messages to learn rules and fix issues.</li>
             </ol>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Tip: open <a className="text-blue-600 dark:text-blue-300 hover:underline" href="/help">Docs</a> for examples and troubleshooting.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Tip: open <a className="text-blue-600 dark:text-blue-300 hover:underline" href="/help">Docs</a> for examples and troubleshooting. Star or report issues on <a className="text-blue-600 dark:text-blue-300 hover:underline" href="https://github.com/saivamshi4121/iac-fv" target="_blank" rel="noreferrer">GitHub</a>.</p>
           </div>
         </section>
       </main>

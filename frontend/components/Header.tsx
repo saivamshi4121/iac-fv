@@ -48,7 +48,7 @@ export default function Header() {
               </div>
             )}
           </span>
-          <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:underline">Report Issue</a>
+          <a href="https://github.com/saivamshi4121/iac-fv" target="_blank" rel="noreferrer" className="hover:underline">Report Issue</a>
           <span className="inline-flex items-center gap-1 text-sm">
             <span className={`inline-block w-2 h-2 rounded-full ${apiOk ? 'bg-green-500' : apiOk === false ? 'bg-red-500' : 'bg-gray-400'}`}></span>
             <button onClick={async () => {
@@ -75,7 +75,7 @@ export default function Header() {
                 setVersions(`Terraform: ${j.terraform.stdout?.split('\n')[0]}\n${j.tflint.stdout?.trim()}\nCheckov ${j.checkov.stdout?.trim()}`);
               } catch { setVersions('Unavailable'); }
             }} className="hover:underline text-left">Versions</button>
-            <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:underline">Report Issue</a>
+            <a href="https://github.com/saivamshi4121/iac-fv" target="_blank" rel="noreferrer" className="hover:underline">Report Issue</a>
             <button onClick={async () => {
               try { const r = await fetch('http://localhost:8080/healthz'); setApiOk(r.ok); } catch { setApiOk(false); }
             }} className="hover:underline text-left">API Status</button>
