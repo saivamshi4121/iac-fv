@@ -1,7 +1,7 @@
 "use client";
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 
-type QA = { q: string; a: JSX.Element };
+type QA = { q: string; a: ReactNode };
 
 export default function HelpPage() {
   const [query, setQuery] = useState("");

@@ -7,7 +7,7 @@ export default function Header() {
   const [versions, setVersions] = useState<string | null>(null);
   const [apiOk, setApiOk] = useState<boolean | null>(null);
   const [showVersions, setShowVersions] = useState(false);
-  const API_ROOT = (process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/validate$/, '') || 'http://localhost:8080');
+  const API_ROOT = (process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/validate$/, '') || 'https://iac-fv.onrender.com');
   useEffect(() => {
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') setDark(true);

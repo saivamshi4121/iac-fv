@@ -29,7 +29,7 @@ resource "null_resource" "demo" {}
     setError(null);
     setResult(null);
     try {
-      const resp = await fetch(process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8080/api/validate', {
+      const resp = await fetch(process.env.NEXT_PUBLIC_API_URL ?? 'https://iac-fv.onrender.com/api/validate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ terraform: code })
