@@ -3,6 +3,9 @@ import { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import Tour from '../../components/Tour';
 
+// Avoid static generation to prevent `document` access during build
+export const dynamic = 'force-dynamic';
+
 type ToolResult = { code: number; stdout: string; stderr: string };
 type ApiResponse = {
   results: {
