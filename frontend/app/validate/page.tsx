@@ -1,7 +1,6 @@
 "use client";
 import { useState } from 'react';
 import Editor from '@monaco-editor/react';
-import Tour from '../../components/Tour';
 
 // Avoid static generation to prevent `document` access during build
 export const dynamic = 'force-dynamic';
@@ -152,12 +151,6 @@ resource "null_resource" "demo" {}
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-8">
-      <Tour steps={[
-        { target: 'h1', title: 'Welcome', text: 'Paste Terraform, run checks, and see results — quickly.' },
-        { target: '#tf-editor', title: 'Editor', text: 'Paste your Terraform code here to start validation.', placement: 'bottom' },
-        { target: '#run-btn', title: 'Run checks', text: "Click 'Run checks' to format, validate, lint, and scan security.", placement: 'top' },
-        { target: '#results-panel', title: 'Results', text: 'See detailed results here, with warnings and errors clearly indicated.', placement: 'top' },
-      ]} />
       <h1 className="text-2xl font-bold mb-4">Validate Terraform</h1>
       <div id="tf-editor" className="h-[380px] border border-slate-200 dark:border-slate-700 rounded-lg mb-3">
         <Editor
